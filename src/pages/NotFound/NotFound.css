@@ -1,0 +1,24 @@
+.page-note-found {
+    width: 100vw;
+    height: 100vh;
+    padding: 20px 0 40px 0;
+}
+
+.not-found-bg {
+    background-image: url(../../assets/images/pagenotfound.gif);
+    background-position: center;
+    height: 450px;
+}
+
+.not-found-bg h1 {
+    font-size: 80px;
+    font-weight: 900;
+}
+
+.content-box-404 h3 {
+    font-size: 40px;
+}
+
+.content-box-404 {
+    margin-top: -60px;
+}
