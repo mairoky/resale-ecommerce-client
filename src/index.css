@@ -1,11 +1,31 @@
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
 
-body {
+:root {
+  --secondary-bg-color: #fbf6f6;
+  --link-color: #181818;
+  --link-hover-color: #b9995a;
+  --transition: all 0.4s ease-in-out;
+}
+
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
   font-family: 'Playfair Display', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: var(--link-color);
+  transition: var(--transition);
 }

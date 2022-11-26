@@ -1,0 +1,35 @@
+footer {
+    background: var(--secondary-bg-color);
+    padding: 1rem 0 0 0;
+}
+
+footer .social-media ul li {
+    display: inline-block;
+    padding: 0;
+    margin: 0 8px;
+}
+
+footer .social-media ul li a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    line-height: 30px;
+    border-radius: 50%;
+    font-size: 16px;
+    border: 1px solid var(--link-color);
+}
+
+footer .social-media ul li a:hover {
+    background: var(--link-hover-color);
+    color: #fff;
+    border-color: var(--link-hover-color);
+}
+
+.footer-info-single ul.list-unstyled li a:hover {
+    color: var(--link-hover-color);
+}
+
+footer .footer-bottom {
+    background: #1a1a1a;
+    color: #fff;
+}
