@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
 
 :root {
+  --primary-bg-color: #f4f4f4;
   --secondary-bg-color: #fbf6f6;
   --link-color: #181818;
   --link-hover-color: #b9995a;
@@ -19,6 +20,7 @@ html {
 }
 
 body {
+  background: var(--primary-bg-color);
   font-family: 'Playfair Display', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

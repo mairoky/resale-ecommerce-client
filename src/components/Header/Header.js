@@ -32,7 +32,7 @@ const Header = () => {
                             <Offcanvas.Body>
                                 <Nav className="justify-content-end flex-grow-1">
                                     <Nav.Link as={Link} to="/">Home</Nav.Link>
-                                    <Nav.Link as={NavLink} to="/">Link</Nav.Link>
+                                    <Nav.Link as={NavLink} to="/blog">Blog</Nav.Link>
                                 </Nav>
                                 <Form className="d-flex">
                                     <Form.Control
@@ -46,16 +46,16 @@ const Header = () => {
                                     </Button>
                                 </Form>
                                 <Nav>
-                                    <Nav.Link to="/">Login</Nav.Link>
+                                    <Nav.Link as={NavLink} to="/login">Login</Nav.Link>
                                     <NavDropdown
                                         title="Profile"
                                         id={`rebuy-navDropdown-expand-${expand}`}
                                     >
-                                        <NavDropdown.Item as={Link} to="/">
+                                        <NavDropdown.Item as={Link} to="/dashboard">
                                             Dashboard
                                         </NavDropdown.Item>
                                         <NavDropdown.Divider />
-                                        <NavDropdown.Item as={Link} to="/">
+                                        <NavDropdown.Item as={Link}>
                                             Logout
                                         </NavDropdown.Item>
                                     </NavDropdown>
