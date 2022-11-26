@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -8,10 +8,18 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { FaSearch } from "react-icons/fa";
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider';
 import './Header.css';
 
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+    // Handle Logout
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
     return (
         <header className='py-1'>
             {['lg'].map((expand) => (
@@ -46,19 +54,23 @@ const Header = () => {
                                     </Button>
                                 </Form>
                                 <Nav>
-                                    <Nav.Link as={NavLink} to="/login">Login</Nav.Link>
-                                    <NavDropdown
-                                        title="Profile"
-                                        id={`rebuy-navDropdown-expand-${expand}`}
-                                    >
-                                        <NavDropdown.Item as={Link} to="/dashboard">
-                                            Dashboard
-                                        </NavDropdown.Item>
-                                        <NavDropdown.Divider />
-                                        <NavDropdown.Item as={Link}>
-                                            Logout
-                                        </NavDropdown.Item>
-                                    </NavDropdown>
+                                    {
+                                        !user?.uid ?
+                                            <Nav.Link as={NavLink} to="/login">Login</Nav.Link>
+                                            :
+                                            <NavDropdown
+                                                title="Profile"
+                                                id={`rebuy-navDropdown-expand-${expand}`}
+                                            >
+                                                <NavDropdown.Item as={Link} to="/dashboard">
+                                                    Dashboard
+                                                </NavDropdown.Item>
+                                                <NavDropdown.Divider />
+                                                <NavDropdown.Item as={Link}>
+                                                    <button className='btn btn-dark' onClick={handleLogOut}>Logout</button>
+                                                </NavDropdown.Item>
+                                            </NavDropdown>
+                                    }
                                 </Nav>
                             </Offcanvas.Body>
                         </Navbar.Offcanvas>

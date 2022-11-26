@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../context/AuthProvider';
 import toast from 'react-hot-toast';
 
-// TODO: JWT TOKEN Implementation
+// TODO: JWT TOKEN Implementation, Social Login
 const Signup = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -27,14 +27,14 @@ const Signup = () => {
                 toast.success(`${name} your ${role} account created successfully.`);
                 handleProfileUpdate(name, email, role);
                 reset();
+                navigate(from, { replace: true });
             })
             .catch(err => {
-                // console.log(err.message);
+                console.error(err.message);
                 toast.error(err.message);
             })
             .finally(() => {
                 setLoading(false);
-                navigate(from, { replace: true });
             })
     }
 

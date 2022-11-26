@@ -1,23 +1,56 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
-
+import { useForm } from 'react-hook-form';
+import { AuthContext } from '../../context/AuthProvider';
+import toast from 'react-hot-toast';
+// TODO: JWT, SocialLogin
 const Login = () => {
+
+    const [loginUserEmail, setLoginUserEmail] = useState('');
+
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+
+    // Get Auth Context Data
+    const { loginUser, socialLogin, setLoading } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
     // Handle Login Form
-    const handleLogin = () => {
+    const handleLogin = (data) => {
+        console.log(data);
+        const { email, password } = data;
+        loginUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setLoginUserEmail(email);
+                reset();
+                navigate(from, { replace: true });
+            })
+            .catch(err => {
+                console.error(err.message);
+                toast.error(err.message);
+            })
+            .finally(() => {
+                setLoading(false);
+            })
 
     }
     // Handle Google Login
     const handleGoogleLogIn = () => {
 
     }
+
     return (
         <div className='my-5'>
             <div className="container">
                 <div className="row">
                     <div className="col-lg-6 col-md-7 col-12 m-auto">
                         <div className="card border-0 py-4">
-                            <form onSubmit={handleLogin}>
+                            <form onSubmit={handleSubmit(handleLogin)}>
                                 <div className="card-body">
                                     <div className="text-center">
                                         <h3>Login</h3>
@@ -25,11 +58,13 @@ const Login = () => {
                                     <hr />
                                     <div className="form-group mt-2">
                                         <label htmlFor="email">Email</label>
-                                        <input type="email" id="email" name="email" className="form-control" required />
+                                        <input {...register('email', { required: 'Email is Required.' })} type="email" id="email" className="form-control" />
+                                        {errors.email && <p className='text-danger m-0'>{errors.email.message}</p>}
                                     </div>
                                     <div className="form-group mt-2">
                                         <label htmlFor="password">Password</label>
-                                        <input type="password" id="password" name="password" className="form-control" required />
+                                        <input {...register('password', { required: 'Password is Required.' })} type="password" id="password" className="form-control" />
+                                        {errors.password && <p className='text-danger m-0'>{errors.password.message}</p>}
                                     </div>
                                     <div className="text-center">
                                         <button type="submit" className="w-50 btn btn-dark mt-3">Register</button>
