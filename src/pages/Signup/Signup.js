@@ -4,18 +4,25 @@ import { FaGoogle } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../context/AuthProvider';
 import toast from 'react-hot-toast';
+import useToken from '../../hooks/useToken';
 
-// TODO: JWT TOKEN Implementation, Social Login
+// TODO: Social Login
 const Signup = () => {
-    const navigate = useNavigate();
-    const location = useLocation();
     const [userEmail, setUserEmail] = useState('');
+
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     // Get AuthContext Data
     const { createUser, socialLogin, updateUserProfile, setLoading } = useContext(AuthContext);
 
+    const [token] = useToken(userEmail);
+
+    const navigate = useNavigate();
+    const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
+    if (token) {
+        navigate(from, { replace: true });
+    }
     // Handle Signup Form
     const handleSignup = (data) => {
         // console.log('form data', data);
@@ -27,7 +34,7 @@ const Signup = () => {
                 toast.success(`${name} your ${role} account created successfully.`);
                 handleProfileUpdate(name, email, role);
                 reset();
-                navigate(from, { replace: true });
+
             })
             .catch(err => {
                 console.error(err.message);

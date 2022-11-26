@@ -4,7 +4,8 @@ import { FaGoogle } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../context/AuthProvider';
 import toast from 'react-hot-toast';
-// TODO: JWT, SocialLogin
+import useToken from '../../hooks/useToken';
+// TODO: SocialLogin
 const Login = () => {
 
     const [loginUserEmail, setLoginUserEmail] = useState('');
@@ -14,9 +15,15 @@ const Login = () => {
     // Get Auth Context Data
     const { loginUser, socialLogin, setLoading } = useContext(AuthContext);
 
+    const [token] = useToken(loginUserEmail);
+
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
+
+    if (token) {
+        navigate(from, { replace: true });
+    }
 
     // Handle Login Form
     const handleLogin = (data) => {
@@ -28,7 +35,6 @@ const Login = () => {
                 console.log(user);
                 setLoginUserEmail(email);
                 reset();
-                navigate(from, { replace: true });
             })
             .catch(err => {
                 console.error(err.message);
