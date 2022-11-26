@@ -33,11 +33,11 @@ const Login = () => {
                                     </div>
                                     <div className="text-center">
                                         <button type="submit" className="w-50 btn btn-dark mt-3">Register</button>
-                                        <Link to="/signup" className="d-block mt-2">Don't have Account?<span> <strong>Signup Now</strong></span></Link>
+                                        <Link to="/signup" className="d-block mt-2">Don't have Account? <strong>Signup Now</strong></Link>
                                     </div>
                                     <hr />
                                     <div className="text-center">
-                                        <Link onClick={handleGoogleLogIn} className="w-50 btn btn-outline-dark"><FaGoogle /> Signup with Google</Link>
+                                        <Link onClick={handleGoogleLogIn} className="w-50 btn btn-outline-dark"><FaGoogle /> Login with Google</Link>
                                     </div>
                                 </div>
                             </form>
