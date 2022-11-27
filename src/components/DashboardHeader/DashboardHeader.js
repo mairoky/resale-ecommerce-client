@@ -18,7 +18,7 @@ const DashboardHeader = () => {
     }
     return (
         <header className='py-1'>
-            {[false].map((expand) => (
+            {['lg'].map((expand) => (
                 <Navbar key={expand} expand={expand}>
                     <Container>
                         <Navbar.Brand as={Link} to="/">ReBuy Bike</Navbar.Brand>
@@ -34,34 +34,33 @@ const DashboardHeader = () => {
                                 </Offcanvas.Title>
                             </Offcanvas.Header>
                             <Offcanvas.Body>
-                                <Nav className="justify-content-end flex-grow-1">
+                                <Nav className="justify-content-end align-items-center flex-grow-1">
                                     {
                                         isAdmin && <>
-                                            <Nav.Link as={Link} to="/dashboard/all-sellers">All Sellers</Nav.Link>
-                                            <Nav.Link as={Link} to="/dashboard/all-buyers">All Buyers</Nav.Link>
-                                            <Nav.Link as={Link} to="/dashboard/reported-items">Reported Items</Nav.Link>
+                                            <Nav.Link as={NavLink} to="/dashboard/all-sellers">All Sellers</Nav.Link>
+                                            <Nav.Link as={NavLink} to="/dashboard/all-buyers">All Buyers</Nav.Link>
+                                            <Nav.Link as={NavLink} to="/dashboard/reported-items">Reported Items</Nav.Link>
                                         </>
                                     }
                                     {
                                         isSeller && <>
-                                            <Nav.Link as={Link} to="/dashboard/add-product">Add Product</Nav.Link>
-                                            <Nav.Link as={Link} to="/dashboard/my-products">My Products</Nav.Link>
-                                            <Nav.Link as={Link} to="/dashboard/my-buyers">My Buyers</Nav.Link>
+                                            <Nav.Link as={NavLink} to="/dashboard/add-product">Add Product</Nav.Link>
+                                            <Nav.Link as={NavLink} to="/dashboard/my-products">My Products</Nav.Link>
+                                            <Nav.Link as={NavLink} to="/dashboard/my-buyers">My Buyers</Nav.Link>
                                         </>
                                     }
                                     {
                                         isBuyer && <>
-                                            <Nav.Link as={Link} to="/dashboard/my-orders">My Orders</Nav.Link>
+                                            <Nav.Link as={NavLink} to="/dashboard/my-orders">My Orders</Nav.Link>
                                         </>
                                     }
                                     {
                                         !user?.uid ?
                                             <Nav.Link as={NavLink} to="/login">Login</Nav.Link>
                                             :
-                                            <Nav.Link as={NavLink} to="/login">
+                                            <Nav.Link as={Link} to="/login">
                                                 <button className='btn btn-dark' onClick={handleLogOut}>Logout</button>
                                             </Nav.Link>
-
                                     }
                                 </Nav>
                             </Offcanvas.Body>

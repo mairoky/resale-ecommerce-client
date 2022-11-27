@@ -4,9 +4,12 @@ import { AuthContext } from '../../context/AuthProvider';
 const UserDashboard = () => {
     const { user } = useContext(AuthContext);
     return (
-        <div className='h-100 w-100 d-flex justify-content-center align-items-center'>
-            <div>
-                <h1>{user?.displayName}, Welcome to your Dashboard!</h1>
+        <div className='container mt-5'>
+            <div className='row align-items-center'>
+                <div className="col-10 mx-auto">
+                    <h1 className='text-center'><strong>{user?.displayName}</strong>, Welcome to your Dashboard!</h1>
+                </div>
+
             </div>
         </div>
     );
