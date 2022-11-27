@@ -1,18 +1,12 @@
 import React, { useContext } from 'react';
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { FaSearch } from "react-icons/fa";
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
-import './Header.css';
 
-
-const Header = () => {
+const DashboardHeader = () => {
     const { user, logOut } = useContext(AuthContext);
     // Handle Logout
     const handleLogOut = () => {
@@ -22,7 +16,7 @@ const Header = () => {
     }
     return (
         <header className='py-1'>
-            {['lg'].map((expand) => (
+            {[false].map((expand) => (
                 <Navbar key={expand} expand={expand}>
                     <Container>
                         <Navbar.Brand as={Link} to="/">ReBuy Bike</Navbar.Brand>
@@ -30,7 +24,7 @@ const Header = () => {
                         <Navbar.Offcanvas
                             id={`rebuy-nav-expand-${expand}`}
                             aria-labelledby={`rebuy-navLabel-expand-${expand}`}
-                            placement="end"
+                            placement="start"
                         >
                             <Offcanvas.Header closeButton>
                                 <Offcanvas.Title id={`rebuy-navLabel-expand-${expand}`}>
@@ -38,38 +32,17 @@ const Header = () => {
                                 </Offcanvas.Title>
                             </Offcanvas.Header>
                             <Offcanvas.Body>
-                                <Nav className="justify-content-end flex-grow-1">
+                                <Nav className="">
                                     <Nav.Link as={Link} to="/">Home</Nav.Link>
                                     <Nav.Link as={NavLink} to="/blog">Blog</Nav.Link>
-                                </Nav>
-                                <Form className="d-flex">
-                                    <Form.Control
-                                        type="search"
-                                        placeholder="Search"
-                                        className="me-2"
-                                        aria-label="Search"
-                                    />
-                                    <Button variant="outline-dark">
-                                        <FaSearch />
-                                    </Button>
-                                </Form>
-                                <Nav>
                                     {
                                         !user?.uid ?
                                             <Nav.Link as={NavLink} to="/login">Login</Nav.Link>
                                             :
-                                            <NavDropdown
-                                                title="Profile"
-                                                id={`rebuy-navDropdown-expand-${expand}`}
-                                            >
-                                                <NavDropdown.Item as={Link} to="/dashboard">
-                                                    Dashboard
-                                                </NavDropdown.Item>
-                                                <NavDropdown.Divider />
-                                                <NavDropdown.Item as={Link}>
-                                                    <button className='btn btn-dark' onClick={handleLogOut}>Logout</button>
-                                                </NavDropdown.Item>
-                                            </NavDropdown>
+                                            <Nav.Link as={NavLink} to="/login">
+                                                <button className='btn btn-dark' onClick={handleLogOut}>Logout</button>
+                                            </Nav.Link>
+
                                     }
                                 </Nav>
                             </Offcanvas.Body>
@@ -81,4 +54,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default DashboardHeader;

@@ -76,7 +76,7 @@ const Footer = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
-                            <p className="text-center m-0">Copyright © 2023. ReBuy Store.</p>
+                            <p className="text-center m-0">Copyright © 2023. ReBuy Bike.</p>
                         </div>
                     </div>
                 </div>

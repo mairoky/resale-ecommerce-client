@@ -73,7 +73,7 @@ const Login = () => {
                                         {errors.password && <p className='text-danger m-0'>{errors.password.message}</p>}
                                     </div>
                                     <div className="text-center">
-                                        <button type="submit" className="w-50 btn btn-dark mt-3">Register</button>
+                                        <button type="submit" className="w-50 btn btn-dark mt-3">Login</button>
                                         <Link to="/signup" className="d-block mt-2">Don't have Account? <strong>Signup Now</strong></Link>
                                     </div>
                                     <hr />

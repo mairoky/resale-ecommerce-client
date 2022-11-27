@@ -3,9 +3,9 @@ import { FallingLines } from 'react-loader-spinner';
 
 const Loader = () => {
     return (
-        <div className='d-flex justify-content-center'>
+        <div className='h-100 w-100 d-flex justify-content-center align-items-center'>
             <FallingLines
-                color="#4fa94d"
+                color="#181818"
                 width="100"
                 visible={true}
                 ariaLabel='falling-lines-loading'
