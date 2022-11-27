@@ -14,7 +14,6 @@ const AllBuyers = () => {
         setShow(false);
     };
 
-
     // Load Buyers Data
     const { data: buyers = [], refetch, isLoading } = useQuery({
         queryKey: ['buyers'],
@@ -40,7 +39,7 @@ const AllBuyers = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.deletedCount > 0) {
                     toast.success(`Buyer ${buyer?.name} Deleted Successfully.`);
                     refetch();
@@ -54,6 +53,7 @@ const AllBuyers = () => {
 
     return (
         <div className='container mt-5'>
+            <h5>Buyers List</h5>
             <Table responsive striped bordered hover variant="dark">
                 <thead>
                     <tr>
