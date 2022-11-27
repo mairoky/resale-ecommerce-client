@@ -8,31 +8,29 @@ import useToken from '../../hooks/useToken';
 // TODO: SocialLogin
 const Login = () => {
 
-    const [loginUserEmail, setLoginUserEmail] = useState('');
-
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
-
     // Get Auth Context Data
     const { loginUser, socialLogin, setLoading } = useContext(AuthContext);
 
-    const [token] = useToken(loginUserEmail);
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+
+    const [loginUserEmail, setLoginUserEmail] = useState('');
+
+
 
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
-    if (token) {
-        navigate(from, { replace: true });
-    }
+
 
     // Handle Login Form
     const handleLogin = (data) => {
-        console.log(data);
+        // console.log(data);
         const { email, password } = data;
         loginUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
                 setLoginUserEmail(email);
                 reset();
             })
@@ -50,6 +48,10 @@ const Login = () => {
 
     }
 
+    const [token] = useToken(loginUserEmail);
+    if (token) {
+        navigate(from, { replace: true });
+    }
     return (
         <div className='my-5'>
             <div className="container">

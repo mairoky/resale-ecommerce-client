@@ -5,9 +5,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
+import useCheckUserRole from '../../hooks/useCheckUserRole';
 
 const DashboardHeader = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [isAdmin, isBuyer, isSeller] = useCheckUserRole(user?.email);
     // Handle Logout
     const handleLogOut = () => {
         logOut()
@@ -32,9 +34,26 @@ const DashboardHeader = () => {
                                 </Offcanvas.Title>
                             </Offcanvas.Header>
                             <Offcanvas.Body>
-                                <Nav className="">
-                                    <Nav.Link as={Link} to="/">Home</Nav.Link>
-                                    <Nav.Link as={NavLink} to="/blog">Blog</Nav.Link>
+                                <Nav className="justify-content-end flex-grow-1">
+                                    {
+                                        isAdmin && <>
+                                            <Nav.Link as={Link} to="/dashboard/all-sellers">All Sellers</Nav.Link>
+                                            <Nav.Link as={Link} to="/dashboard/all-buyers">All Buyers</Nav.Link>
+                                            <Nav.Link as={Link} to="/dashboard/reported-items">Reported Items</Nav.Link>
+                                        </>
+                                    }
+                                    {
+                                        isSeller && <>
+                                            <Nav.Link as={Link} to="/dashboard/add-product">Add Product</Nav.Link>
+                                            <Nav.Link as={Link} to="/dashboard/my-products">My Products</Nav.Link>
+                                            <Nav.Link as={Link} to="/dashboard/my-buyers">My Buyers</Nav.Link>
+                                        </>
+                                    }
+                                    {
+                                        isBuyer && <>
+                                            <Nav.Link as={Link} to="/dashboard/my-orders">My Orders</Nav.Link>
+                                        </>
+                                    }
                                     {
                                         !user?.uid ?
                                             <Nav.Link as={NavLink} to="/login">Login</Nav.Link>
