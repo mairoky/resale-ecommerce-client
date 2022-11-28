@@ -8,3 +8,7 @@
 .category {
     background-color: #fafafa;
 }
+
+.register .reg-container {
+    background-color: var(--secondary-bg-color);
+}

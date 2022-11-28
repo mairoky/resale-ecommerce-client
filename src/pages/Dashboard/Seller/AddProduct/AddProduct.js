@@ -32,7 +32,7 @@ const AddProduct = () => {
 
     const handleAddProduct = (data) => {
         // console.log(data);
-        const createdAt = new Date().toLocaleDateString();
+        const createdAt = new Date().toLocaleString();
         const image = data.product_image[0];
         // console.log(image);
         const formData = new FormData();

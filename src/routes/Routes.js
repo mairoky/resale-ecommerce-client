@@ -13,6 +13,7 @@ import UserDashboard from "../pages/Dashboard/UserDashboard";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import NotFound from "../pages/NotFound/NotFound";
+import ProductByCategory from "../pages/ProductByCategory/ProductByCategory";
 import Signup from "../pages/Signup/Signup";
 import AdminRoutes from "./AdminRoutes";
 import BuyerRoutes from "./BuyerRoutes";
@@ -28,6 +29,11 @@ export const router = createBrowserRouter([
                 path: '/',
                 element: <Home></Home>,
                 loader: () => fetch('http://localhost:5000/category')
+            },
+            {
+                path: '/category/:id',
+                element: <ProtectedRoutes><ProductByCategory></ProductByCategory></ProtectedRoutes>,
+                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
             },
             {
                 path: '/blog',

@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import AdvertiseProductCard from '../../components/AdvertiseProductCard/AdvertiseProductCard';
 import Banner from '../../components/Banner/Banner';
 import CategoryCard from '../../components/CategoryCard/CategoryCard';
@@ -9,6 +9,7 @@ import './Home.css';
 
 const Home = () => {
     const category = useLoaderData();
+    const navigate = useNavigate();
 
     const { data: products = [], isLoading } = useQuery({
         queryKey: ['products'],
@@ -27,7 +28,7 @@ const Home = () => {
 
     // Handle Category Click
     const handleCategory = (id) => {
-        console.log(id);
+        navigate(`/category/${id}`);
     }
 
     if (isLoading) {
@@ -78,7 +79,29 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-        </div>
+            <section className="register py-5">
+                <div className="container">
+                    <div className="reg-container">
+                        <div className="row p-5 align-items-lg-center">
+                            <div className="col-lg-7 col-md-12 col-12 text-lg-start text-center">
+                                <div className="section-heading">
+                                    <h1 >Everyday New Product.<br />
+                                        Ready to Buy & Sell?</h1>
+                                    <h4>Get items delivered to your doorstep.</h4>
+                                </div>
+                            </div>
+                            <div className="col-lg-5 col-md-12 col-12 text-lg-end text-center">
+                                <Link to="/signup">
+                                    <button className="btn btn-outline-dark fw-semibold py-2 px-4">Join Now</button>
+                                </Link>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div >
     );
 };
 
