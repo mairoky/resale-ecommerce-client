@@ -15,13 +15,9 @@ const Login = () => {
 
     const [loginUserEmail, setLoginUserEmail] = useState('');
 
-
-
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-
-
 
     // Handle Login Form
     const handleLogin = (data) => {
