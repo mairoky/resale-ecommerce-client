@@ -1,0 +1,10 @@
+.banner {
+    background-image: url(../../assets/images/banner-bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.category {
+    background-color: #fafafa;
+}

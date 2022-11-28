@@ -5,10 +5,10 @@ import './App.css';
 
 function App() {
   return (
-    <div>
+    <>
       <RouterProvider router={router}></RouterProvider>
       <Toaster></Toaster>
-    </div>
+    </>
   );
 }
 

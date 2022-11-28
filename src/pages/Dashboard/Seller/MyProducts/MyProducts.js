@@ -20,6 +20,22 @@ const MyProducts = () => {
     // Update Status
     const updateSoldStatus = (product) => {
         fetch(`http://localhost:5000/products/${product?._id}`, {
+            method: 'PATCH',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    refetch();
+                    toast.success(`${product?.product_name} Sales Status Updated.`)
+                }
+            })
+    }
+    // Handle Advertise
+    const handleAdvertise = (product) => {
+        fetch(`http://localhost:5000/products/${product?._id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -29,7 +45,7 @@ const MyProducts = () => {
             .then(data => {
                 if (data.modifiedCount > 0) {
                     refetch();
-                    toast.success(`${product?.product_name} Sales Status Update`)
+                    toast.success(`${product?.product_name} Successfully Advertise.`)
                 }
             })
     }
@@ -80,6 +96,13 @@ const MyProducts = () => {
                                             onClick={() => updateSoldStatus(product)}
                                             className='btn btn-outline-danger btn-sm me-2'>
                                             Update Sales Status
+                                        </button>
+                                    }
+                                    {
+                                        product?.status === 'Available' && !product?.advertise && <button
+                                            onClick={() => handleAdvertise(product)}
+                                            className='btn btn-outline-danger btn-sm me-2'>
+                                            Advertise
                                         </button>
                                     }
                                     <button

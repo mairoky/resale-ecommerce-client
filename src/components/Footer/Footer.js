@@ -66,7 +66,7 @@ const Footer = () => {
                         <div className="col-lg-3 col-md-6 col-12">
                             <div className="footer-info-single">
                                 <h5>Payment</h5>
-                                <p>Sample HTML page with Twitter's Bootstrap. Code example of Easy Sticky Footer using HTML, Javascript, jQuery, and CSS.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt velit, ratione magni ad quos doloremque.</p>
                             </div>
                         </div>
                     </div>

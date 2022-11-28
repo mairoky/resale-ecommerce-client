@@ -1,0 +1,4 @@
+.category-card {
+    background: var(--secondary-bg-color);
+    cursor: pointer;
+}

@@ -1,0 +1,8 @@
+.banner-content h1 {
+    font-size: 5rem;
+    font-weight: 900;
+}
+
+.banner-content h1 span {
+    color: var(--link-hover-color);
+}
