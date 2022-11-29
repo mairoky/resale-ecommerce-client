@@ -52,6 +52,7 @@ const DashboardHeader = () => {
                                     {
                                         isBuyer && <>
                                             <Nav.Link as={NavLink} to="/dashboard/my-orders">My Orders</Nav.Link>
+                                            <Nav.Link as={NavLink} to="/dashboard/my-wishlist">My Wishlist</Nav.Link>
                                         </>
                                     }
                                     {

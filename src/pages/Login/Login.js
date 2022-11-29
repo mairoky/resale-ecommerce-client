@@ -20,9 +20,10 @@ const Login = () => {
     const from = location.state?.from?.pathname || '/';
 
     const [token] = useToken(loginUserEmail);
-    if (token) {
-        navigate(from, { replace: true });
-    }
+
+    // if (token) {
+    //     navigate(from, { replace: true });
+    // }
 
     // Handle Login Form
     const handleLogin = (data) => {
@@ -33,7 +34,7 @@ const Login = () => {
                 const user = result.user;
                 // console.log(user);
                 setLoginUserEmail(email);
-                // navigate(from, { replace: true });
+                navigate(from, { replace: true });
                 reset();
             })
             .catch(err => {

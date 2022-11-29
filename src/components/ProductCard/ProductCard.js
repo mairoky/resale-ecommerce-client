@@ -1,9 +1,9 @@
 import React from 'react';
 import './ProductCard.css';
 
-const ProductCard = ({ product, setProduct, setShow }) => {
+const ProductCard = ({ product, setProduct, setShow, handleWishlist, handleReportProduct }) => {
     // console.log(product);
-    const { product_name, product_image, original_price, resale_price, location, seller_name, purchase_year, number, createdAt } = product;
+    const { _id, product_name, product_image, original_price, resale_price, location, seller_name, purchase_year, number, createdAt } = product;
 
     return (
         <div className='col-md-6 col-12'>
@@ -17,9 +17,7 @@ const ProductCard = ({ product, setProduct, setShow }) => {
                             <h5 className='m-0'>{seller_name}</h5>
                             <p className='m-0'>{number}</p>
                         </div>
-                        <div>
-                            <p className='m-0'><small>Posted: {createdAt}</small></p>
-                        </div>
+
                     </div>
                 </div>
                 <div className="col-md-6 col-12 text-center">
@@ -29,16 +27,31 @@ const ProductCard = ({ product, setProduct, setShow }) => {
                         <h5>Buying Price: {original_price}</h5>
                         <h5>Selling Price: {resale_price}</h5>
                         <h5>Location: {location}</h5>
-                        <button
-                            onClick={() => {
-                                setProduct(product);
-                                setShow(true);
-                            }}
-                            className="btn btn-outline-dark"
-                        >Book Now</button>
+                        <div>
+                            <button
+                                onClick={() => handleReportProduct(_id)}
+                                className='btn btn-sm btn-outline-dark me-2'>
+                                Report
+                            </button>
+                            <button
+                                onClick={() => handleWishlist(product)}
+                                className='btn btn-sm btn-outline-dark me-2'>
+                                Wishlist
+                            </button>
+                            <button
+                                onClick={() => {
+                                    setProduct(product);
+                                    setShow(true);
+                                }}
+                                className="btn btn-outline-dark">
+                                Book Now
+                            </button>
+                        </div>
+                        <div>
+                            <p className='m-0'><small>Posted: {createdAt}</small></p>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
     );

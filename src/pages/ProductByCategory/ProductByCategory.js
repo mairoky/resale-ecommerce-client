@@ -17,6 +17,34 @@ const ProductByCategory = () => {
     };
     const navigate = useNavigate();
 
+    // Handle Wishlist Product
+    const handleWishlist = (wishlistProduct) => {
+        // console.log(wishlistProduct);
+        const { product_name, resale_price, number } = wishlistProduct;
+        const wishList = {
+            name: product_name,
+            price: resale_price,
+            seller_number: number,
+            buyer_email: user?.email
+        }
+        // console.log(wishList);
+        fetch('http://localhost:5000/wishlist', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(wishList)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success('Product Added to Wishlist');
+                } else {
+                    toast.error(data.message);
+                }
+            })
+    }
+
     const handleBooking = (bookingProduct) => {
         // console.log('booking data', bookingProduct);
         fetch('http://localhost:5000/booking', {
@@ -38,6 +66,11 @@ const ProductByCategory = () => {
             })
     }
 
+    const handleReportProduct = (id) => {
+        console.log(id);
+        // TODO: - Report To Admin
+    }
+
     return (
         <section className='category-product my-5'>
             <div className="container">
@@ -48,6 +81,8 @@ const ProductByCategory = () => {
                             product={product}
                             setProduct={setProduct}
                             setShow={setShow}
+                            handleWishlist={handleWishlist}
+                            handleReportProduct={handleReportProduct}
                         ></ProductCard>)
                     }
                 </div>
