@@ -29,6 +29,25 @@ const AllSellers = () => {
         }
     });
 
+    // Handle Verify Seller
+    const handleVerify = (seller) => {
+        fetch(`http://localhost:5000/users/sellers/${seller?._id}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data);
+                if (data.modifiedCount > 0) {
+                    toast.success(`${seller?.name} Verify Successful.`);
+                    refetch();
+                }
+            })
+    }
+
+    // Handle Delete Seller
     const handleDelete = (seller) => {
         // console.log(seller);
         fetch(`http://localhost:5000/users/${seller?._id}`, {
@@ -69,10 +88,28 @@ const AllSellers = () => {
                             <td>{idx + 1}</td>
                             <td>{seller?.name}</td>
                             <td>{seller?.email}</td>
-                            <td><button onClick={() => {
-                                setDeletingSeller(seller);
-                                setShow(true);
-                            }} className='btn btn-outline-danger btn-sm'><FaTrash /></button></td>
+                            <td>
+                                {
+                                    seller?.seller_status !== 'verified' && <button
+                                        onClick={() => handleVerify(seller)}
+                                        className='me-2 btn btn-sm btn-danger'>
+                                        Verify
+                                    </button>
+                                }
+                                {
+                                    seller?.seller_status === 'verified' && <button
+                                        className='me-2 btn btn-sm btn-danger' disabled>
+                                        Verified
+                                    </button>
+                                }
+                                <button onClick={() => {
+                                    setDeletingSeller(seller);
+                                    setShow(true);
+                                }}
+                                    className='btn btn-outline-danger btn-sm'>
+                                    <FaTrash />
+                                </button>
+                            </td>
                         </tr>)
                     }
                 </tbody>
