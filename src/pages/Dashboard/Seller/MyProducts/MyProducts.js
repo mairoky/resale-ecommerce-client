@@ -4,7 +4,6 @@ import Table from 'react-bootstrap/Table';
 import { useQuery } from '@tanstack/react-query';
 import Loader from '../../../../components/Loader/Loader';
 import { FaTrash } from 'react-icons/fa';
-import Dropdown from 'react-bootstrap/Dropdown';
 import toast from 'react-hot-toast';
 
 const MyProducts = () => {

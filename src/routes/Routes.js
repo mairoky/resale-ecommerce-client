@@ -55,7 +55,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                element: <UserDashboard></UserDashboard>
+                element: <ProtectedRoutes><UserDashboard></UserDashboard></ProtectedRoutes>
             },
             {
                 path: '/dashboard/all-sellers',

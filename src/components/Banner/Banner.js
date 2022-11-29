@@ -8,7 +8,7 @@ const Banner = () => {
             <div className="row align-items-center">
                 <div className="col-md-6 col-12 py-5">
                     <div className="banner-content">
-                        <h1 className='text-uppercase'>Buy Our Premium <br /><span> Motor Bike</span></h1>
+                        <h1 className='text-uppercase'>Buy Premium <br /><span> Motor Bike</span></h1>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, inventore modi mollitia iusto minus voluptate?</p>
                     </div>
                 </div>
