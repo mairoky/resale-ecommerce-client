@@ -19,6 +19,11 @@ const Signup = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
+    const [token] = useToken(userEmail);
+    if (token) {
+        navigate(from, { replace: true });
+    }
+
     // Handle Signup Form
     const handleSignup = (data) => {
         // console.log('form data', data);
@@ -79,10 +84,7 @@ const Signup = () => {
             })
     }
 
-    const [token] = useToken(userEmail);
-    if (token) {
-        navigate(from, { replace: true });
-    }
+
     return (
         <div className='my-5'>
             <div className="container">

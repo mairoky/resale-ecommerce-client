@@ -1,4 +1,37 @@
-# Getting Started with Create React App
+# ReBuy Bike - Bike Resale e-commerce Full Stack Project
+## Live Link: 
+
+## Technologies that are used to build this project: MERN
+    - React JS - for building the UI.
+    - Express JS - used for server.
+    - Node JS - used for server side scripting
+    - MongoDB - used as database
+    - React Bootstrap, Bootstrap & vanilla css are used for styling components.
+    - For device specifics responsiveness is done by Bootstrap.
+    - Firebase Auth is used for Authenticate User
+    - For Server side scripting used Node JS along with express
+    - For storing data MongoDB (NoSQL) Database is used 
+    - For client side hosting Firebase Hosting is used
+    - Vercel deployment service is used to deploy sever side code
+
+
+## Outcome of this Project
+Mainly This project is highlight the main core features of React JS like use of React Context API, useState, useEffect, conditional rendering, react router dom, react hook form & more react features, Firebase Auth Integration, node js, express js & mongodb used for database operation, along with implement .env and jwt.
+
+## Package Used
+    - bootstrap
+    - react-bootstrap
+    - react-hot-toast
+    - react-router-dom
+    - react-icons
+    - react-loader-spinner
+    - react-hook-form
+    - firebase
+    - express
+    - mongodb
+    - cors
+    - jsonwebtoken
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
