@@ -3,17 +3,20 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import useCheckUserRole from '../../hooks/useCheckUserRole';
 
 const DashboardHeader = () => {
     const { user, logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
     const [isAdmin, isBuyer, isSeller] = useCheckUserRole(user?.email);
     // Handle Logout
     const handleLogOut = () => {
         logOut()
-            .then(() => { })
+            .then(() => {
+                navigate('/login');
+            })
             .catch(error => console.error(error))
     }
     return (
@@ -34,7 +37,7 @@ const DashboardHeader = () => {
                                 </Offcanvas.Title>
                             </Offcanvas.Header>
                             <Offcanvas.Body>
-                                <Nav className="justify-content-end align-items-center flex-grow-1">
+                                <Nav className="justify-content-end flex-grow-1 align-items-lg-center">
                                     {
                                         isAdmin && <>
                                             <Nav.Link as={NavLink} to="/dashboard/all-sellers">All Sellers</Nav.Link>
@@ -59,7 +62,7 @@ const DashboardHeader = () => {
                                         !user?.uid ?
                                             <Nav.Link as={NavLink} to="/login">Login</Nav.Link>
                                             :
-                                            <Nav.Link as={Link} to="/login">
+                                            <Nav.Link as={Link}>
                                                 <button className='btn btn-dark' onClick={handleLogOut}>Logout</button>
                                             </Nav.Link>
                                     }

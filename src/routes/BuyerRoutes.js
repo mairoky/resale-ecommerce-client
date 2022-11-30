@@ -1,12 +1,17 @@
 import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
+import Loader from '../components/Loader/Loader';
 import { AuthContext } from '../context/AuthProvider';
 import useCheckUserRole from '../hooks/useCheckUserRole';
 
 const BuyerRoutes = ({ children }) => {
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const location = useLocation();
-    const [isBuyer] = useCheckUserRole(user?.email);
+    const [isBuyer, userLoading] = useCheckUserRole(user?.email);
+
+    // if (userLoading) {
+    //     return <Loader></Loader>
+    // }
 
     if (!user && !isBuyer) {
         return <Navigate to="/login" state={{ from: location }} replace />

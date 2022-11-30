@@ -20,9 +20,9 @@ const Signup = () => {
     const from = location.state?.from?.pathname || '/';
 
     const [token] = useToken(userEmail);
-    if (token) {
-        navigate(from, { replace: true });
-    }
+    // if (token) {
+    //     navigate(from, { replace: true });
+    // }
 
     // Handle Signup Form
     const handleSignup = (data) => {
@@ -81,6 +81,7 @@ const Signup = () => {
             .then(data => {
                 // console.log(data);
                 setUserEmail(email);
+                navigate(from, { replace: true });
             })
     }
 

@@ -15,6 +15,7 @@ const ProductByCategory = () => {
         setProduct(null);
         setShow(false);
     };
+
     const navigate = useNavigate();
 
     // Handle Wishlist Product
@@ -67,7 +68,7 @@ const ProductByCategory = () => {
     }
 
     const handleReportProduct = (id) => {
-        console.log(id);
+        // console.log(id);
         // TODO: - Report To Admin
     }
 

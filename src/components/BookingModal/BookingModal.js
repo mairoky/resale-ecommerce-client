@@ -13,6 +13,7 @@ const BookingModal = ({ user, product, show, handleClose, handleBooking }) => {
             buyer_email: user?.email,
             product_id: product?._id,
             product_name: product?.product_name,
+            product_image: product?.product_image,
             product_price: product?.resale_price,
             buyer_number: data.number,
             buyer_location: data.location,

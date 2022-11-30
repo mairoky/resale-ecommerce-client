@@ -37,3 +37,7 @@ a:focus,
 a:active {
   color: var(--link-hover-color);
 }
+
+table td {
+  vertical-align: middle;
+}

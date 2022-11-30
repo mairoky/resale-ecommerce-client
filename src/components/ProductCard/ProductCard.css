@@ -1,3 +1,7 @@
 .product-card {
     background-color: #fff;
 }
+
+.product-card .verify-icon {
+    color: blue;
+}
