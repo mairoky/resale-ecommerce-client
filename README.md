@@ -1,6 +1,9 @@
 # ReBuy Bike - Bike Resale e-commerce Full Stack Project
 ## Live Link: https://resale-ecommerce.web.app/
 
+## adminEmail: admin@admin.com
+## adminPassword: 123456
+
 ## Technologies that are used to build this project: MERN
     - React JS - for building the UI.
     - Express JS - used for server.
