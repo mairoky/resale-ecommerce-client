@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../context/AuthProvider';
 import toast from 'react-hot-toast';
 import useToken from '../../hooks/useToken';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 // TODO: Social Login
 const Signup = () => {
@@ -19,6 +20,8 @@ const Signup = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
+    const googleProvider = new GoogleAuthProvider();
+
     const [token] = useToken(userEmail);
     // if (token) {
     //     navigate(from, { replace: true });
@@ -32,7 +35,6 @@ const Signup = () => {
             .then(result => {
                 const user = result.user;
                 // console.log(user);
-                toast.success(`${name} your ${role} account created successfully.`);
                 handleProfileUpdate(name, email, role);
                 reset();
 
@@ -60,11 +62,16 @@ const Signup = () => {
 
     // Handle Google Login
     const handleGoogleLogIn = () => {
-
+        socialLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                saveUserToDB(user?.displayName, user?.email);
+            })
+            .catch(err => console.error(err))
     }
 
     // Save user to the Database
-    const saveUserToDB = (name, email, role) => {
+    const saveUserToDB = (name, email, role = 'buyer') => {
         const user = {
             name,
             email,
@@ -80,6 +87,7 @@ const Signup = () => {
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
+                toast.success(`${name} your ${role} account created successfully.`);
                 setUserEmail(email);
                 navigate(from, { replace: true });
             })

@@ -38,6 +38,19 @@ a:active {
   color: var(--link-hover-color);
 }
 
+input.form-control,
+textarea.form-control {
+  transition: var(--transition);
+  color: var(--link-color);
+  border: 1px solid var(--link-color);
+}
+
+input.form-control:focus,
+textarea.form-control:focus {
+  border: 1px solid var(--link-hover-color);
+  box-shadow: none;
+}
+
 table td {
   vertical-align: middle;
 }
