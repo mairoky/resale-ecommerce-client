@@ -11,7 +11,7 @@ const ProductCard = ({ product, setProduct, setShow, handleWishlist, handleRepor
         queryKey: ['seller', seller_email],
         queryFn: async () => {
             try {
-                const res = await fetch(`http://localhost:5000/users/${seller_email}`);
+                const res = await fetch(`https://resale-ecommerce-server.vercel.app/users/${seller_email}`);
                 const data = await res.json();
                 return data;
             }
@@ -23,7 +23,7 @@ const ProductCard = ({ product, setProduct, setShow, handleWishlist, handleRepor
 
     return (
         <div className='col-md-6 col-12'>
-            <div className="product-card p-3 d-flex align-items-center rounded">
+            <div className="row align-items-center rounded p-3 product-card">
                 <div className="col-md-6 col-12">
                     <div className="product-image rounded">
                         <img className='img-fluid' src={product_image} alt="" />

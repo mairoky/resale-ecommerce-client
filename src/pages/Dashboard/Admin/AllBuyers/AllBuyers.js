@@ -19,7 +19,7 @@ const AllBuyers = () => {
         queryKey: ['buyers'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/users/buyers');
+                const res = await fetch('https://resale-ecommerce-server.vercel.app/users/buyers');
                 const data = await res.json();
                 return data;
             }
@@ -31,7 +31,7 @@ const AllBuyers = () => {
 
     const handleDelete = (buyer) => {
         // console.log(buyer);
-        fetch(`http://localhost:5000/users/${buyer?._id}`, {
+        fetch(`https://resale-ecommerce-server.vercel.app/users/${buyer?._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

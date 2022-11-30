@@ -19,7 +19,7 @@ const AllSellers = () => {
         queryKey: ['sellers'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/users/sellers');
+                const res = await fetch('https://resale-ecommerce-server.vercel.app/users/sellers');
                 const data = await res.json();
                 return data;
             }
@@ -31,7 +31,7 @@ const AllSellers = () => {
 
     // Handle Verify Seller
     const handleVerify = (seller) => {
-        fetch(`http://localhost:5000/users/sellers/${seller?._id}`, {
+        fetch(`https://resale-ecommerce-server.vercel.app/users/sellers/${seller?._id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -50,7 +50,7 @@ const AllSellers = () => {
     // Handle Delete Seller
     const handleDelete = (seller) => {
         // console.log(seller);
-        fetch(`http://localhost:5000/users/${seller?._id}`, {
+        fetch(`https://resale-ecommerce-server.vercel.app/users/${seller?._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

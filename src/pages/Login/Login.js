@@ -65,7 +65,7 @@ const Login = () => {
             email,
             role
         };
-        fetch('http://localhost:5000/users', {
+        fetch('https://resale-ecommerce-server.vercel.app/users', {
             method: 'POST',
             body: JSON.stringify(user),
             headers: {

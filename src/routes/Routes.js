@@ -30,12 +30,12 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/category')
+                loader: () => fetch('https://resale-ecommerce-server.vercel.app/category')
             },
             {
                 path: '/category/:id',
                 element: <ProtectedRoutes><ProductByCategory></ProductByCategory></ProtectedRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({ params }) => fetch(`https://resale-ecommerce-server.vercel.app/category/${params.id}`)
             },
             {
                 path: '/blog',
@@ -93,7 +93,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/payment/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/payment/${params.id}`),
+                loader: ({ params }) => fetch(`https://resale-ecommerce-server.vercel.app/payment/${params.id}`),
                 element: <BuyerRoutes><Payment></Payment></BuyerRoutes>
             }
         ]

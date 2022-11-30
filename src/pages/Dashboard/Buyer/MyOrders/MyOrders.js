@@ -11,7 +11,7 @@ const MyOrders = () => {
     const { data: booking = [], isLoading, refetch } = useQuery({
         queryKey: ['booking', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/booking/${user?.email}`);
+            const res = await fetch(`https://resale-ecommerce-server.vercel.app/booking/${user?.email}`);
             const data = await res.json();
             return data;
         }

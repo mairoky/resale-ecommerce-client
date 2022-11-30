@@ -2,8 +2,8 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import { useLoaderData, useNavigation } from 'react-router-dom';
-import Loader from '../../../../components/Loader/Loader';
+import { useLoaderData } from 'react-router-dom';
+
 import CheckoutForm from './CheckoutForm';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
@@ -11,10 +11,10 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 const Payment = () => {
     const product = useLoaderData();
     // console.log(product);
-    const navigation = useNavigation();
-    if (navigation.state === "loading") {
-        return <Loader></Loader>
-    }
+    // const navigation = useNavigation();
+    // if (navigation.state === "loading") {
+    //     return <Loader></Loader>
+    // }
     return (
         <div className='my-5'>
             <div className="container">

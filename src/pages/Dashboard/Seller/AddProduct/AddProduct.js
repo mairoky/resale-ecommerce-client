@@ -20,7 +20,7 @@ const AddProduct = () => {
         queryKey: ['category'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/category');
+                const res = await fetch('https://resale-ecommerce-server.vercel.app/category');
                 const data = await res.json();
                 return data;
             }
@@ -66,7 +66,7 @@ const AddProduct = () => {
                         createdAt: createdAt
                     }
                     // Save Product data to the DB
-                    fetch('http://localhost:5000/products', {
+                    fetch('https://resale-ecommerce-server.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

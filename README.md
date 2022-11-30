@@ -1,5 +1,5 @@
 # ReBuy Bike - Bike Resale e-commerce Full Stack Project
-## Live Link: 
+## Live Link: https://resale-ecommerce.web.app/
 
 ## Technologies that are used to build this project: MERN
     - React JS - for building the UI.
@@ -11,12 +11,13 @@
     - Firebase Auth is used for Authenticate User
     - For Server side scripting used Node JS along with express
     - For storing data MongoDB (NoSQL) Database is used 
+    - Stripe Card Payment
     - For client side hosting Firebase Hosting is used
     - Vercel deployment service is used to deploy sever side code
 
 
 ## Outcome of this Project
-Mainly This project is highlight the main core features of React JS like use of React Context API, useState, useEffect, conditional rendering, react router dom, react hook form & more react features, Firebase Auth Integration, node js, express js & mongodb used for database operation, along with implement .env and jwt.
+Mainly This project is highlight the main core features of React JS like use of React Context API, useState, useEffect, conditional rendering, react router dom, react hook form & more react features, Firebase Auth Integration, node js, express js & mongodb used for database operation, along with implement .env and jwt and Stripe Card Payment.
 
 ## Package Used
     - bootstrap
@@ -31,6 +32,8 @@ Mainly This project is highlight the main core features of React JS like use of 
     - mongodb
     - cors
     - jsonwebtoken
+    - react-stripe-js
+    - stripe-js
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

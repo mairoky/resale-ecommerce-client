@@ -11,7 +11,7 @@ const MyWishlist = () => {
     const { data: wishlist = [], refetch, isLoading } = useQuery({
         queryKey: ['wishlist', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/wishlist/${user?.email}`);
+            const res = await fetch(`https://resale-ecommerce-server.vercel.app/wishlist/${user?.email}`);
             const data = await res.json();
             return data;
         }
@@ -19,7 +19,7 @@ const MyWishlist = () => {
 
     // Handle Remove
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/wishlist/${id}`, {
+        fetch(`https://resale-ecommerce-server.vercel.app/wishlist/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

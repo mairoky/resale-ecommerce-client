@@ -29,7 +29,7 @@ const ProductByCategory = () => {
             buyer_email: user?.email
         }
         // console.log(wishList);
-        fetch('http://localhost:5000/wishlist', {
+        fetch('https://resale-ecommerce-server.vercel.app/wishlist', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -48,7 +48,7 @@ const ProductByCategory = () => {
 
     const handleBooking = (bookingProduct) => {
         // console.log('booking data', bookingProduct);
-        fetch('http://localhost:5000/booking', {
+        fetch('https://resale-ecommerce-server.vercel.app/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
